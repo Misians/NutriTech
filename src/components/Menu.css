@@ -1,0 +1,98 @@
+/* src/components/Menu.css */
+
+.main-menu {
+  position: static; /* Keep menu fixed on screen */
+  top: 0;
+  left: 0;
+  height: 100vh; /* Full viewport height */
+  width: 250px; /* Slightly reduced width for a sleeker look */
+  background-color: #9AD2B2; /* Menu background color */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: space-between; /* Push top content to top, bottom to bottom */
+  padding: 20px; /* Vertical padding, horizontal padding handled by menu-item */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* List of Navigation Items */
+.menu-list-top {
+  list-style: none; /* Remove default list bullets */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Stack list items vertically */
+  width: 100%; /* Take full width of parent */
+  overflow-y: auto; /* Enable scrolling for long menus */
+  flex-grow: 1; /* Allow this section to take up available space */
+  gap: 10px; /* Add gap between menu items (alternatively use margin-bottom on li) */
+}
+
+/* Individual List Item (no specific styles needed here typically) */
+.main-menu li {
+  margin: 0;
+  width: 100%;
+}
+
+/* Base styles for all NavLink elements (menu items) */
+.menu-item {
+  color: #EFF2F4; /* Text color */
+  text-decoration: none;
+  border-radius: 8px; /* Slightly rounded corners */
+  font-weight: 600; /* Medium-bold font weight */
+  padding: 12px 20px; /* Adjusted padding for better visual balance */
+  display: flex; /* Use flexbox to align icon and text */
+  align-items: center; /* Vertically center icon and text */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.menu-item:hover {
+  background-color: #7BBF9E; /* Darker green on hover */
+  transform: translateX(5px); /* Slight hover effect */
+}
+
+/* Styles for the active link */
+.active-link {
+  background-color: #FD9D7B; /* Distinct orange background for active link */
+  color: #FFFFFF; /* White text for active state */
+  font-weight: bold; /* Bold text for active state */
+}
+
+/* Icon Styling within Menu Items */
+.menu-icon {
+  margin-right: 12px; /* Space between icon and text */
+  font-size: 1.3em; /* Slightly larger icon size */
+  min-width: 20px; /* Ensure consistent icon width */
+}
+
+/* Bottom Utility Section (Dark Mode / Logout) */
+.menu-bottom-section {
+  width: 100%;
+  padding: 15px 20px; /* Padding for the bottom section */
+  margin-top: 20px; /* Space from menu items above */
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle separator line */
+  box-sizing: border-box;
+  
+  display: flex;
+  flex-direction: column; /* Stack darkmode/logout vertically */
+  gap: 15px; /* Space between these items */
+}
+
+.darkmode,
+.logout {
+  color: #EFF2F4; /* Text color */
+  cursor: pointer;
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  
+  display: flex; /* Use flexbox to align icon and text */
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Center content horizontally within the div */
+  font-weight: 600;
+}
+
+.darkmode:hover,
+.logout:hover {
+  background-color: #7BBF9E;
+}

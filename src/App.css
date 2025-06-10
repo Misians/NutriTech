@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+}
+/* src/App.css */
+
+/* Define CSS Variables for Light Mode (Default) */
+:root {
+  /* Global Page Colors */
+  --page-bg: #f4f4f4;
+  --page-text: #333333;
+  --page-border: #e0e0e0;
+
+  /* Menu Colors */
+  --menu-bg: #9AD2B2;
+  --menu-text: #EFF2F4;
+  --menu-hover-bg: #7BBF9E;
+  --menu-active-bg: #FD9D7B; /* Orange for active */
+  --menu-active-text: #FFFFFF;
+  --menu-active-border: #FFFFFF; /* White highlight bar */
+
+  /* General button/interactive element colors (example) */
+  --btn-bg: #007bff;
+  --btn-text: #ffffff;
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+  /* Global Page Colors */
+  --page-bg: #1a202c; /* Dark background */
+  --page-text: #e2e8f0; /* Light text */
+  --page-border: #4a5568;
+
+  /* Menu Colors */
+  --menu-bg: #2d3748; /* Darker menu background */
+  --menu-text: #e2e8f0;
+  --menu-hover-bg: #4a5568;
+  --menu-active-bg: #6b46c1; /* A distinct active color for dark mode (e.g., a purple) */
+  --menu-active-text: #FFFFFF;
+  --menu-active-border: #e2e8f0; /* Lighter highlight bar */
+
+  /* General button/interactive element colors (example) */
+  --btn-bg: #6b46c1;
+  --btn-text: #e2e8f0;
+}
+
+/* Basic body styles - using variables now */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--page-bg); /* Apply theme background */
+  color: var(--page-text); /* Apply theme text color */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition when theme changes */
+}
+
+/* You might want to add default styles for h1, p etc. to use --page-text */
+h1, p {
+  color: var(--page-text);
+}
