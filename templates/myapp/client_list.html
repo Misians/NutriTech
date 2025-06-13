@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Clientes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        ul { list-style: none; padding: 0; }
+        li { background-color: #f4f4f4; margin-bottom: 10px; padding: 10px; border-radius: 5px; }
+        li a { margin-left: 10px; text-decoration: none; color: #007bff; }
+        li a:hover { text-decoration: underline; }
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .messages li {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .messages .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .messages .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .header-actions { margin-bottom: 20px; }
+        .header-actions a {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .header-actions a:hover { background-color: #218838; }
+        .user-info { float: right; }
+    </style>
+</head>
+<body>
+    <div class="user-info">
+        Bem-vindo, {{ user.username }}! | <a href="{% url 'logout' %}">Sair</a>
+    </div>
+    <h1>Meus Clientes</h1>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="header-actions">
+        <a href="{% url 'client_create' %}">Adicionar Novo Cliente</a>
+    </div>
+
+    {% if clients %}
+        <ul>
+            {% for client in clients %}
+                <li>
+                    <strong>{{ client.fullName }}</strong> (CPF: {{ client.cpf }})<br>
+                    Email: {{ client.email }} | Idade: {{ client.age }} | Gênero: {{ client.get_gender_display }}<br>
+                    Observações: {{ client.observations|default:"N/A" }}<br>
+                    Objetivos: {{ client.objectives|default:"N/A" }}<br>
+                    <a href="{% url 'client_update' client.pk %}">Editar</a>
+                    <a href="{% url 'client_delete' client.pk %}">Excluir</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum cliente cadastrado ainda. <a href="{% url 'client_create' %}">Adicione um novo!</a></p>
+    {% endif %}
+</body>
+</html>

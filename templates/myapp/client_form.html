@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        form p { margin-bottom: 10px; }
+        form label { display: block; margin-bottom: 5px; font-weight: bold; }
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="date"],
+        form input[type="number"],
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Para que o padding não aumente a largura */
+        }
+        form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        form button:hover { background-color: #0056b3; }
+        .back-link { display: inline-block; margin-top: 20px; text-decoration: none; color: #007bff; }
+        .back-link:hover { text-decoration: underline; }
+        .errorlist { color: red; list-style: none; padding: 0; margin-top: -8px; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} {# Renderiza os campos do formulário como parágrafos #}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'client_list' %}" class="back-link">Voltar para a lista de clientes</a>
+</body>
+</html>
