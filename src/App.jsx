@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import './App.css'; // Or wherever your global CSS is
 import Patients from './pages/Patients';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/patients" element={<Patients />} />
+          <Route path="/login" element={<Login />} />
+
 
           {/* Optional: Add a 404 Not Found page */}
           <Route path="*" element={<h1>404 - Page Not Found</h1>} />
